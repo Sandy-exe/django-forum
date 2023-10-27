@@ -10,7 +10,8 @@
 
 {% include "forumapp/messages.html" %}
 
-{% for listing in channel_list|minus_bans:request.user.get_username %}
+
+{% for listing in channel_list %}
   {% include "forumapp/channel_listing.html" %}
 {% empty %}
   <p>No channels are available.</p>

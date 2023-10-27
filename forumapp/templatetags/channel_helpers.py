@@ -5,10 +5,12 @@ from django import template
 register = template.Library()
 
 #Cyustom filter for Channels to make sure the current user isn't banned
-@register.filter
-def minus_bans(channel_list, username):
-    channels = [c.channel_name for c in channel_list if str(username) not in json.loads(c.banned_users)]
-    return Channel.objects.filter(channel_name__in=channels)
+# @register.filter
+# def minus_bans(channel_list, username):
+#     print(channel_list)
+#     channels = [c.channel_name for c in channel_list if str(username) not in json.loads(c.banned_users)]
+#     print(channels)
+#     return Channel.objects.filter(channel_name__in=channels)
 
 @register.filter
 def is_favorite(channel_name, user):

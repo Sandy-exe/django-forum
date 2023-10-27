@@ -154,6 +154,8 @@ class ChannelView(ViewMixin, generic.ListView):
     form_class = ChannelForm
 
     queryset = Channel.objects
+    print(queryset)
+    print(queryset.all())
     context_object_name = 'channel_list'
 
     def get_object(self, exclude=None):

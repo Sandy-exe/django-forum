@@ -12,7 +12,7 @@ class NullsLastManager(models.Manager):
 
 # One-to-one with User
 class UserSettings(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True,on_delete=models.CASCADE)
     favorites = models.TextField(default='[]')
     bio = models.TextField(max_length=250, default='Hello world')
 
@@ -56,7 +56,7 @@ class Thread(models.Model):
     objects = NullsLastManager()
     
     thread_id = models.IntegerField(default=0)
-    channel = models.ForeignKey(Channel)
+    channel = models.ForeignKey(Channel,on_delete=models.CASCADE)
     
     thread_name = models.CharField(max_length=90)
     description = models.CharField(max_length=150)
@@ -103,7 +103,7 @@ class Thread(models.Model):
 # Primary keys are thread and comment_id
 class Comment(models.Model):
     comment_id = models.IntegerField(default=0)
-    thread = models.ForeignKey(Thread)
+    thread = models.ForeignKey(Thread,on_delete=models.CASCADE)
 
     text = models.CharField(max_length=250)
 
